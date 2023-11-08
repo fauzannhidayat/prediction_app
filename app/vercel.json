@@ -1,18 +1,25 @@
-{
-    "version":2,
-    "builds": [
+    {
+        "version": 2,
+        "builds": [
         {
-            "src":"./server.py",
+            "src": "./server.py",
             "use": "@vercel/python"
-            
         }
-        
-    ],
-    "routes":[
+        ],
+        "routes": [
+        { "handle": "filesystem" },
         {
-            "src" : "/(.*)",
+            "src": "/aset/(.*)",
+            "dest": "/static/aset/$1"
+        },
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
             "dest": "server.py"
-
         }
-    ]
-}
+        ]
+    }
+    
